@@ -20,6 +20,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const spotsLeft = details.max_participants - details.participants.length;
 
+        const participantsTags = details.participants.map(
+          (participant) => `<span class="participant-tag">${participant}</span>`
+        ).join(" ");
+
         activityCard.innerHTML = `
           <h4>${name}</h4>
           <p>${details.description}</p>
@@ -27,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <p><strong>Availability:</strong> ${spotsLeft} spots left</p>
           <p><strong>Participants:</strong> ${
             details.participants.length > 0
-              ? details.participants.join(", ")
+              ? participantsTags
               : "No participants yet"
           }</p>
         `;
